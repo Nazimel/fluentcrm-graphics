@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FluentCRM SMS marketing card, 290×400</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 290px; height: 400px; position: relative; overflow: hidden; border-radius: 28px; background: {{ground}}; font-family: 'Nunito', 'Manrope', system-ui, sans-serif; color: #0E121B">
+<div style="position: absolute; left: 45px; top: 52px; width: 200px; height: 440px; box-sizing: border-box; background: #1B1530; border-radius: 34px; padding: 7px; box-shadow: 0 20px 44px rgba(40,20,90,0.30)"><div style="height: 100%; border-radius: 28px; background: #FFFFFF; overflow: hidden; display: flex; flex-direction: column"><div style="display: flex; justify-content: center; padding-top: 7px"><span style="width: 62px; height: 16px; border-radius: 999px; background: #1B1530"></span></div><div style="display: flex; align-items: center; gap: 8px; padding: 9px 12px 9px; background: #FFFFFF; border-bottom: 1px solid #E1E4EA"><span style="width: 28px; height: 28px; border-radius: 999px; background: #1F4D3A; color: #FFF9EB; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800">f</span><span style="flex: 1; font-size: 12.5px; font-weight: 800">fernly</span><span style="font-family: 'Inter', system-ui, sans-serif; font-size: 9px; font-weight: 600; color: #624C18; background: #FFFAEB; padding: 3px 8px; border-radius: 999px; white-space: nowrap">SMS</span></div><div style="display: flex; flex-direction: column; gap: 7px; padding: 12px 10px"><span style="align-self: center; font-size: 9px; font-weight: 700; color: #99A0AE">Today 10:24</span><div style="align-self: flex-start; max-width: 82%; background: #F0F1F4; color: #0E121B; border-radius: 14px 14px 14px 4px; padding: 8px 10px; font-size: 11px; line-height: 1.4; font-weight: 600; box-shadow: 0 1px 2px rgba(14,18,27,0.06)">Hi Grace, your Calathea ships today. Track it here: <span style="color: #335CFF">fern.ly/t/482</span></div><div style="align-self: flex-end; max-width: 75%; background: #7742E6; color: #FFFFFF; border-radius: 14px 14px 4px 14px; padding: 8px 10px; font-size: 11px; line-height: 1.4; font-weight: 600">Thank you, can't wait!</div><div style="align-self: flex-start; max-width: 82%; background: #F0F1F4; color: #0E121B; border-radius: 14px 14px 14px 4px; padding: 8px 10px; font-size: 11px; line-height: 1.4; font-weight: 600; box-shadow: 0 1px 2px rgba(14,18,27,0.06)">Enjoy 10% off your next pick with code GREEN10.</div></div></div></div><div style="position: absolute; left: 18px; top: 314px; width: 254px; box-sizing: border-box; background: #FFFFFF; border-radius: 16px; padding: 10px 12px; box-shadow: 0 12px 28px rgba(60,30,120,0.16)"><div style="display: flex; align-items: center; gap: 9px"><span style="width: 30px; height: 30px; flex-shrink: 0; border-radius: 9px; background: #1DB83A; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8.2L3 21.2V5a2 2 0 0 1 2-2Zm3 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg></span><div style="flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0"><span style="font-size: 13px; font-weight: 800; line-height: 1.15">SMS Campaign</span><span style="font-size: 10px; font-weight: 600; color: #525866">Order update · 1,240 contacts</span></div><span style="font-family: 'Inter', system-ui, sans-serif; font-size: 9.5px; font-weight: 600; color: #0B4627; background: #E0FAEC; padding: 3px 8px; border-radius: 999px; white-space: nowrap">Sent</span></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ground":{"editor":"color","default":"#C9B3F5","options":["#C9B3F5","#E3B7F1","#FFCC99","#FFA9A4"]},"$preview":{"width":290,"height":400}}'>
+class Component extends DCLogic {
+renderVals() { return { ground: this.props.ground ?? '#C9B3F5', mergeTag: '{{contact.first_name}}' }; }
+}
+</script>
+</body>
+</html>
