@@ -25,6 +25,22 @@ INK, SLATE, MUTED, LINE, SURFACE = '#0E121B', '#525866', '#99A0AE', '#E1E4EA', '
 NEAR_BLACK = '#07090C'
 CONNECTOR, CONNECTOR_ON_DARK = '#B98AE8', '#E4D6FB'
 CARD_OUTLINE = '#D9B8F2'
+OUTLINE = f'border: 2px solid {CARD_OUTLINE}'   # every floating card uses this outline
+
+# Ground + panel pairings. Use a different pairing for each graphic in a set.
+PAIRINGS = [
+    ('Cream + Apricot', '#FFF9EB', '#FFCC99'),
+    ('Periwinkle + Orchid', '#E4E5FF', '#E3B7F1'),
+    ('Cream + Coral', '#FFF9EB', '#FFA9A4'),
+    ('Lilac + Lavender', '#F7EDFC', '#C9B3F5'),
+    ('Mint + Lavender', '#ECFFF8', '#C9B3F5'),
+    ('White + Periwinkle', '#FFFFFF', '#C9B3F6'),
+]
+EMPHASIS_GROUNDS = ('#7742E6', '#5F35B8')   # expanded/hover and emphasis cards
+
+def pick_pairing(i):
+    """(name, ground, panel) for the i-th graphic in a set, so neighbours never share a pairing."""
+    return PAIRINGS[i % len(PAIRINGS)]
 SHADOW = 'box-shadow: 0 12px 28px rgba(60,30,120,0.16)'
 
 # ---------------------------------------------------------------- icons
@@ -134,8 +150,10 @@ def merge_chip():
     """Merge tag chip. Renders {{mergeTag}}, so the board's renderVals() must return mergeTag (write_board does)."""
     return f'<span style="{INT}; font-size: 9.5px; font-weight: 500; color: #351A75; background: #EFEBFF; padding: 2px 6px; border-radius: 6px">{{{{mergeTag}}}}</span>'
 
-def eyebrow(text):
-    return f'<span style="align-self: flex-start; {INT}; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: {PURPLE_DARK}; background: {PURPLE_WASH}; padding: 7px 14px; border-radius: 999px">{text}</span>'
+def eyebrow(text, soft=False, size=12):
+    """Pill badge. Solid purple with white text on any tinted ground; soft=True (purple wash) only on white."""
+    fg, bg = (PURPLE_DARK, PURPLE_WASH) if soft else ('#FFFFFF', PURPLE)
+    return f'<span style="align-self: flex-start; {INT}; font-size: {size}px; font-weight: 700; letter-spacing: 0.1em; color: {fg}; background: {bg}; padding: 7px 14px; border-radius: 999px">{text}</span>'
 
 # ---------------------------------------------------------------- cards
 def campaign_card(x, y, w, icon_svg, tile_color, title, sub, label=None, line_html=None):
@@ -145,7 +163,7 @@ def campaign_card(x, y, w, icon_svg, tile_color, title, sub, label=None, line_ht
         line = (f'<div style="margin-top: 9px; padding-top: 7px; border-top: 1px solid {LINE}; display: flex; flex-direction: column; gap: 3px">'
                 f'<span style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; color: {MUTED}">{label}</span>'
                 f'<span style="display: flex; align-items: center; font-size: 11px; font-weight: 700; white-space: nowrap">{line_html}</span></div>')
-    return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; box-sizing: border-box; background: #FFFFFF; border-radius: 16px; padding: 10px 12px; {SHADOW}; {NUN}; color: {INK}">'
+    return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; box-sizing: border-box; background: #FFFFFF; {OUTLINE}; border-radius: 14px; padding: 10px 12px; {SHADOW}; {NUN}; color: {INK}">'
             f'<div style="display: flex; align-items: center; gap: 9px">{tile(icon_svg, tile_color)}'
             f'<div style="flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0">'
             f'<span style="font-size: 13px; font-weight: 800; line-height: 1.15">{title}</span>'
@@ -184,7 +202,8 @@ def _product(bg, leaf, pot, name, price):
             f'<span style="font-size: 9.5px; font-weight: 700; color: #4F6B5C">{price}</span></div>')
 
 def fernly_email(x, y, w, subject=False, h=420):
-    """Designed sample email from the fictional store fernly. Bleeds when placed near an edge."""
+    """Bold sample email from the fictional store fernly, for graphics where the EMAIL IS THE ANCHOR (email campaign cards).
+    Elsewhere use quiet_email(). Complete structure; size h so it runs off the BOTTOM edge only, never the sides."""
     sub = ''
     if subject:
         sub = (f'<div style="margin: 0 -10px; padding: 9px 12px 8px; background: #FFFFFF; border-bottom: 1px solid {LINE}; display: flex; align-items: center; '
@@ -199,7 +218,9 @@ def fernly_email(x, y, w, subject=False, h=420):
             f'<span style="font-size: 20px; line-height: 1.1; font-weight: 800; color: {FERN_CREAM}">Fresh picks for you, Grace</span>'
             f'<span style="font-size: 10.5px; line-height: 1.35; color: #CFE3D6">New arrivals, chosen from the plants you loved.</span>'
             f'<span style="margin-top: 3px; background: #FFCC99; color: #1F3B2D; font-size: 10.5px; font-weight: 800; padding: 7px 16px; border-radius: 999px">Shop the edit</span></div>'
-            f'<div style="display: flex; gap: 8px; margin-top: 9px">{_product("#EAFCE8", "#3E8E5B", "#E8A87C", "Calathea", "$24")}{_product("#FEEBB9", "#5BAA6E", "#C97B5A", "Pilea", "$18")}</div></div>')
+            f'<div style="display: flex; gap: 8px; margin-top: 9px">{_product("#EAFCE8", "#3E8E5B", "#E8A87C", "Calathea", "$24")}{_product("#FEEBB9", "#5BAA6E", "#C97B5A", "Pilea", "$18")}</div>'
+            f'<div style="padding: 10px 4px 2px; font-size: 10px; line-height: 1.45; color: #4F6B5C">Free delivery on orders over $40, and easy 30-day returns.</div>'
+            f'<div style="margin-top: 10px; padding-top: 8px; border-top: 2px solid {PURPLE}; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 8.5px; color: {MUTED}"><span>fernly · 14 Garden Row, Austin</span><span><span style="color: {PURPLE}; font-weight: 700">Manage preferences</span> · Unsubscribe</span></div></div>')
 
 def mini_email(w=176, subject='Your picks are ready', headline='Picked for you, Grace', button='Shop now'):
     """Small email preview to sit beside a Send step (expanded message block)."""
@@ -232,7 +253,7 @@ def phone(x, y, w, ch, messages=None, h=440):
                 f'font-size: 11px; line-height: 1.4; font-weight: 600">{html}</div>')
     return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px; box-sizing: border-box; background: #1B1530; border-radius: 34px; padding: 7px; '
             f'box-shadow: 0 20px 44px rgba(40,20,90,0.30); {NUN}; color: {INK}">'
-            f'<div style="height: 100%; border-radius: 28px; background: {c["screen"]}; overflow: hidden; display: flex; flex-direction: column">'
+            f'<div style="height: {h - 14}px; border-radius: 28px; background: {c["screen"]}; overflow: hidden; display: flex; flex-direction: column">'
             f'<div style="display: flex; justify-content: center; padding-top: 7px"><span style="width: 62px; height: 16px; border-radius: 999px; background: #1B1530"></span></div>'
             f'<div style="display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: #FFFFFF; border-bottom: 1px solid {LINE}">'
             f'<span style="width: 28px; height: 28px; border-radius: 999px; background: {FERN_GREEN}; color: {FERN_CREAM}; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800">f</span>'
@@ -298,3 +319,70 @@ def write_preview(path, root_html, ground=LAVENDER, page_bg='#FFFFFF', merge_tag
     body = root_html.replace('{{ground}}', ground).replace('{{mergeTag}}', merge_tag)
     open(path, 'w').write(f'<!doctype html><html><head><meta charset="utf-8"><style>/*FONTS*/body{{margin:0;background:{page_bg}}}</style></head><body>{body}</body></html>')
     return path
+
+
+# ---------------------------------------------------------------- report cards (0.1.1)
+def _card(x, y, w, h, inner, pad='10px 12px 12px'):
+    hh = f' height: {h}px;' if h else ''
+    return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px;{hh} box-sizing: border-box; background: #FFFFFF; {OUTLINE}; border-radius: 14px; '
+            f'padding: {pad}; box-shadow: 0 14px 30px rgba(60,30,120,0.18); {NUN}; color: {INK}; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">{inner}</div>')
+
+def campaigns_list(x, y, w, h=None, rows=(('Spring Picks', '2,480 contacts', 'Sent'), ('Plant Care Tips', '2,312 contacts', 'Sent'), ('Summer Preview', 'Jun 2 · 2,540 contacts', 'Scheduled'))):
+    def row(name, sub, st):
+        b = status('Sent') if st == 'Sent' else badge(st, '#624C18', '#FFFAEB')
+        return (f'<div style="display: flex; align-items: center; gap: 9px">{tile(icon("send_campaign", 14), PURPLE, 26, 8)}'
+                f'<div style="flex: 1; display: flex; flex-direction: column; min-width: 0"><span style="font-size: 11.5px; font-weight: 800">{name}</span>'
+                f'<span style="font-size: 9.5px; font-weight: 600; color: {SLATE}">{sub}</span></div>{b}</div>')
+    return _card(x, y, w, h, f'<span style="{INT}; font-size: 10.5px; font-weight: 600">Email Campaigns</span>' + ''.join(row(*r) for r in rows))
+
+def link_clicks(x, y, w, h=None, rows=(('fernly.co/spring-edit', '214'), ('fernly.co/calathea', '96'), ('fernly.co/gift-cards', '57'))):
+    body = ''.join(f'<div style="display: flex; justify-content: space-between; {INT}; font-size: 10px; color: {SLATE}"><span style="color: #335CFF">{u}</span><span style="color: {INK}; font-weight: 600">{n}</span></div>' for u, n in rows)
+    return _card(x, y, w, h, f'<span style="{INT}; font-size: 10.5px; font-weight: 600">Link Clicks</span><div style="display: flex; flex-direction: column; gap: 6px">{body}</div>', '9px 10px 10px')
+
+def revenue_card(x, y, w, h=None, label='Revenue · Spring Picks', value='$12,840', bars=(30, 45, 38, 60, 72, 90)):
+    b = ''.join(f'<div style="flex: 1; height: {v}%; border-radius: 4px; background: {PURPLE}"></div>' for v in bars)
+    return _card(x, y, w, h, f'<span style="{INT}; font-size: 11px; font-weight: 600">{label}</span><span style="{INT}; font-size: 22px; font-weight: 600">{value}</span>'
+                 f'<div style="display: flex; align-items: flex-end; gap: 6px; height: 30px">{b}</div>', '12px')
+
+def grid4(x, y, w, h, gap=16, cards=(None, None, None, None), large=192, small=120):
+    """Preferred 4-card layout: two large + two small placed diagonally.
+    cards = (top-left LARGE, bottom-left SMALL, top-right SMALL, bottom-right LARGE); each a function f(x, y, w, h) -> html.
+    Columns share the width, both end on the same line. Scale large/small so large + gap + small == h."""
+    cw = (w - gap) // 2
+    tl, bl, tr, br = cards
+    return (tl(x, y, cw, large) + bl(x, y + large + gap, cw, small)
+            + tr(x + cw + gap, y, cw, small) + br(x + cw + gap, y + small + gap, cw, large))
+
+# ---------------------------------------------------------------- quiet sample email (0.1.1 default)
+def _plant_svg(w, h):
+    return (f'<svg width="{w}" height="{h}" viewBox="0 0 120 90" aria-hidden="true"><ellipse cx="38" cy="38" rx="11" ry="22" transform="rotate(-30 38 38)" fill="#9FD8B0"/>'
+            f'<ellipse cx="60" cy="30" rx="11" ry="25" fill="#7CC796"/><ellipse cx="82" cy="38" rx="11" ry="22" transform="rotate(30 82 38)" fill="#9FD8B0"/>'
+            f'<path d="M40 56h40l-5 30H45z" fill="#F4C9A6"/><circle cx="18" cy="70" r="5" fill="#FFE5CC"/><circle cx="104" cy="22" r="4" fill="#E4E5FF"/></svg>')
+
+def _bar(pct, w=None):
+    width = f'{w}px' if w else f'{pct}%'
+    return f'<div style="height: 6px; width: {width}; border-radius: 9px; background: #EEF0F4"></div>'
+
+def quiet_email(x, y, w, h, subject='Welcome to fernly, Grace', headline="Glad you're here, Grace", line='Plant tips and early access, twice a month.', button='Start here'):
+    """Default sample email: complete, calm, illustration-led, so the flow and copy lead.
+    White body, pale mint hero with a flat illustration, outline button, grey lines for body copy, footer.
+    Make h run past the panel/frame bottom so the email continues off the BOTTOM edge only."""
+    tiles = ''.join(f'<div style="flex: 1; background: {bg}; border-radius: 10px; padding: 6px 2px 8px; display: flex; flex-direction: column; align-items: center; gap: 5px">{_plant_svg(56, 42)}<div style="height: 5px; width: 60%; border-radius: 9px; background: #E6E9EE"></div></div>' for bg in ('#F7FBF8', '#FFF9F2', '#F6F6FD'))
+    return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px; box-sizing: border-box; background: #FFFFFF; border-radius: 18px; box-shadow: 0 18px 40px rgba(60,30,120,0.18); overflow: hidden; padding: 0 12px; {NUN}">'
+            f'<div style="margin: 0 -12px; padding: 9px 12px 8px; border-bottom: 1px solid {LINE}; font-size: 10px; font-weight: 700; white-space: nowrap; color: {INK}"><span style="color: {MUTED}; font-weight: 600; margin-right: 5px">Subject</span>{subject}</div>'
+            f'<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 2px 8px"><span style="font-size: 14px; font-weight: 800; color: #3E7A57">fernly</span><span style="display: flex; gap: 5px">{_bar(0, 18)}{_bar(0, 18)}</span></div>'
+            f'<div style="background: #F1FAF4; border-radius: 14px; padding: 12px 12px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px">{_plant_svg(120, 90)}'
+            f'<span style="font-size: 16px; line-height: 1.15; font-weight: 800; color: #2F5D44">{headline}</span>'
+            f'<span style="font-size: 10px; line-height: 1.4; color: #6B8577">{line}</span>'
+            f'<span style="margin-top: 2px; border: 1.5px solid #7CC796; color: #2F5D44; font-size: 10px; font-weight: 800; padding: 5px 14px; border-radius: 999px">{button}</span></div>'
+            f'<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 2px 4px">{_bar(92)}{_bar(78)}{_bar(60)}</div>'
+            f'<div style="display: flex; gap: 6px; margin-top: 8px">{tiles}</div>'
+            f'<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 2px 4px">{_bar(88)}{_bar(70)}</div>'
+            f'<div style="margin-top: 10px; background: #F7FBF8; border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px">{_plant_svg(48, 36)}<div style="flex: 1; display: flex; flex-direction: column; gap: 5px">{_bar(90)}{_bar(60)}</div></div>'
+            f'<div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid {LINE}; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 8.5px; color: {MUTED}"><span>fernly · 14 Garden Row, Austin</span><span><span style="color: {PURPLE}; font-weight: 700">Manage preferences</span> · Unsubscribe</span></div></div>')
+
+# ---------------------------------------------------------------- scaling for large formats (0.1.1)
+def scaled(x, y, html, w, h, k=1.7):
+    """Place card-sized kit pieces on 1080+ formats: w/h are the piece's NATIVE size; k scales it from the top-left.
+    Typical at 1080 wide: phone k≈2.2 (zoomed, cropped off the bottom), support cards k≈1.67, block flows k≈1.25."""
+    return f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px; transform: scale({k}); transform-origin: top left">{html}</div>'

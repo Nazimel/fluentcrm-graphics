@@ -10,7 +10,9 @@ One self-contained illustration card in the website's language, built from the 2
 - **Ground:** the card itself, 28px radius at 290 to 600px wide (32 to 40px above that), overflow hidden.
 - **Scene:** one anchor object (a flow, a designed email, a phone, a product UI crop), with one or two support cards at most.
 - **Layer order:** ground → bleeding preview → flow or campaign cards → floating cards (stats, inbox, revenue, brand icon tile). Never more than three layers deep.
-- **Bleed:** previews (email, phone, UI crop) run off the right and/or bottom edge. Floating cards stay fully inside, at least 8px from every edge. Nothing bleeds off the top-left corner.
+- **Bleed:** emails run off the bottom edge only (complete, fitted to the width); phones are zoomed in and crop off the bottom; product UI crops may run off the right and bottom. Floating cards stay fully inside, at least 8px from every edge. Nothing bleeds off the top-left corner.
+- **Spacing:** equal outer margins; equal spacing between panel edge, cards and anchor. Support cards do not overlap the anchor (only the brand icon tile may sit on a corner). Every floating card has the same 2px `#D9B8F2` outline.
+- **Fill:** no empty patch bigger than a card outside the copy zone. Four cards → two large + two small, diagonal (`grid4()`).
 
 ## Grounds
 | Ground | Use | Adjustments |

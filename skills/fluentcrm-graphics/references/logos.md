@@ -11,8 +11,9 @@ Full-colour marks from the plugin's `4-logos-and-integrations` folder, cleaned (
 
 
 ## FluentCRM brand marks (`assets/brand/`)
-- `fluentcrm-logo-color`: wordmark with the icon, for light grounds.
-- `fluentcrm-logo-white` / `fluentcrm-logo-black`: one-colour wordmarks for purple, dark or very light grounds.
+- `fluentcrm-logo-light-bg`: purple tile, white F, ink wordmark. Use on every light ground.
+- `fluentcrm-logo-dark-bg`: white tile, purple F, white wordmark. Use on purple or dark grounds only.
+- `fluentcrm-logo-white` / `fluentcrm-logo-black`: one-colour wordmarks.
 - `fluentcrm-icon`: purple tile with the white F mark (the floating icon tile in illustrations).
 - `fluentcrm-icon-inverted`, `fluentcrm-icon-white`, `fluentcrm-icon-black`: alternates.
 

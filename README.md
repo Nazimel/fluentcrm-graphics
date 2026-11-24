@@ -34,4 +34,4 @@ You get PNG files at 2× resolution, plus an editable board (on your Design canv
 - Purple #7742E6 is the marketing signal; Lavender #C9B3F5 is the default illustration panel.
 
 ## Version
-0.1.0 · Brand guide draft v3 (not locked). Raise `version` in `.claude-plugin/plugin.json` and `marketplace.json` on every release so installs pick up the update. Send changes to Nazir.
+0.1.1 · Brand guide draft v3 (not locked). Raise `version` in `.claude-plugin/plugin.json` and `marketplace.json` on every release so installs pick up the update. Send changes to Nazir.

@@ -36,3 +36,7 @@ Labels are the exact product block names; illustrations may rename steps descrip
 | Integrations (LearnDash, LifterLMS, TutorLMS, MemberPress, PMPro, RCP, WishList Member, WooCommerce, EDD, WordPress) | the matching file, e.g. `learndash`, `woo_purchased`, `ld_in_course` |
 
 **Not in the set:** SMS and WhatsApp. Use the `sms` and `wa` glyphs in `kit.py` (`icon("sms", px)`).
+
+
+## Platform icons stay on their platform
+Never use a platform-specific icon (`new_order_woo`, `woo_purchased`, `edd_purchased`, `new_order_edd`, `woocommerce`, LMS icons) for another platform's step. A FluentCart order, or any order trigger without its own icon, uses `trigger`.

@@ -27,7 +27,7 @@ Everything needed is inside this skill folder:
 
 4. **Build.** Write one Python generator per request that imports the kit (`sys.path.insert(0, '<this skill>/scripts'); from kit import *`), composes absolutely positioned pieces inside `board()`, then calls `write_board()` for the editable .dc.html and `write_preview()` for the render check. Copy `scripts/example_generator.py` or the closest example as a start. For several sizes or variants, generate them all from one script. Keep copy as literal text; merge tags render through `merge_chip()`.
 
-5. **Render check (never skip).** Run `python3 scripts/render.py preview.html out.png W H`, open the PNG and look for clipped or overflowing text, collisions, connectors that do not touch their blocks, empty dead areas and anything that breaks the safe zones. Measure instead of guessing: `python3 scripts/render.py --measure preview.html W H "Block label"` prints a block's box. For several boards make one contact sheet with `--sheet`. Fix and re-render until clean.
+5. **Render check (never skip).** Run `python3 scripts/render.py preview.html out.png W H`, open the PNG and check: clipped or overflowing text; collisions or support cards overlapping the anchor; connectors that do not touch their blocks; empty patches bigger than a card; unequal margins or spacing; emails cut at the sides or looking unfinished; badges or logos that blend into their ground; cards in one layout with mismatched sizes or missing outlines; text too small to read at the final size; anything that breaks the safe zones. Measure instead of guessing: `python3 scripts/render.py --measure preview.html W H "Block label"` prints a block's box. For several boards make one contact sheet with `--sheet`. Fix and re-render until clean.
 
 6. **Deliver.**
    - Export PNGs at 2× (3× for a single small card) and send them to the user as files.
@@ -35,6 +35,11 @@ Everything needed is inside this skill folder:
    - Reply briefly: what was made, decisions to confirm (default size used, copy on or off the image, Pro features shown, sample data invented), and one next step.
 
 ## Non-negotiables
+- Mix colours: a different ground + panel pairing per graphic (`pick_pairing()`); purple grounds for emphasis and expanded cards.
+- Emails are complete and quiet (`quiet_email()`), fitted to the width and running off the bottom only. Phones are zoomed in and crop off the bottom.
+- Equal outer margins and equal internal spacing; no overlap with the anchor; the same outline on every floating card; no large empty areas; four cards as two large + two small, diagonal.
+- Light grounds use `fluentcrm-logo-light-bg`; badges on tinted grounds are solid purple.
+- On 1080+ formats scale kit pieces with `scaled()` so everything reads without zooming.
 - One anchor and at most two support cards; previews bleed off the right or bottom only; floating cards stay 8px inside the edges.
 - Nunito inside illustrations, Inter inside product UI, Manrope for headlines and copy.
 - Lavender `#C9B3F5` by default; brand purple `#7742E6` for emphasis and expanded hover states, with connectors `#E4D6FB` on it.

@@ -30,6 +30,7 @@ Calm, capable, product-first, confident and spacious: a serious marketing platfo
 ## Content fundamentals
 - **Voice:** confident and outcome-led. Lead with what the reader gets, then the mechanism.
 - **Person:** second person (*you*, *your audience*). "We" only on community, milestone and release posts.
+- **Badges contrast with their ground:** solid purple `#7742E6` with white text on any tinted ground; the pale purple-wash badge only on white.
 - **Casing:** sentence case for headlines and body; title case only for the positioning line. ALL CAPS only for pill badges and eyebrows.
 - **Length:** headlines up to 8 words per line, 2 lines on social and 3 on web; body 2 to 4 lines.
 - **Emoji:** none on web pages; on social only as a small accent inside a badge.
@@ -44,6 +45,7 @@ Calm, capable, product-first, confident and spacious: a serious marketing platfo
 - **Campaign results bars:** sent `#7B61FF`, opened `#22D3BB`, clicked `#F6B51E`, bounced `#335CFF`, on 5 to 6px `#F5F7FA` tracks.
 - **Palette, light (section backgrounds, soft cards):** Mint `#ECFFF8`, Leaf `#EAFCE8`, Periwinkle `#E4E5FF`, Peach `#FFE5CC`, Butter `#FEEBB9`, Lilac `#F7EDFC`, Blush `#FFE5E6`, Cream `#FFF9EB`. One light colour per section.
 - **Palette, visible (accent cards, panels):** Lavender `#C9B3F5` (also `#C9B3F6`), Orchid mist `#F8EDFC`, Orchid `#E3B7F1`, Apricot `#FFCC99`, Coral `#FFA9A4`. Never pair near-identical colours (`#C9B3F6` with `#C9B3F5`, `#F8EDFC` with `#F7EDFC`).
+- **Pairings (mix and match):** every graphic takes one ground and one panel from these pairs, and a set of graphics uses a different pair for each: Cream + Apricot, Periwinkle + Orchid, Cream + Coral, Lilac + Lavender, Mint + Lavender, White + Periwinkle. Purple `#7742E6` or purple-dark `#5F35B8` grounds are for emphasis and expanded (hover) cards. Block colours inside flows never change. See `PAIRINGS` / `pick_pairing()` in `kit.py`.
 - **Illustration extras:** connector `#B98AE8` (on purple grounds `#E4D6FB`), ⊕ ring `#C77DDF`, floating-card outline `#D9B8F2`.
 - **Social accents:** orange `#FF9933` for badges on purple or dark grounds; gold `#FACF5A` for stars and milestone sparkles.
 - **Forbidden:** `#5468D5` as a FluentCRM colour; sibling product colours appear only as small app tiles.
@@ -60,6 +62,13 @@ Calm, capable, product-first, confident and spacious: a serious marketing platfo
 
 ## Imagery and layout
 - Product UI only, rebuilt in markup. No stock photos, people photos, 3D renders or random illustrations.
+- **Sample emails are complete.** Everything visible reads as a finished email: subject, brand header, hero, body, products or sections, footer with "Manage preferences". Emails are long, so they run off the **bottom** edge only, never the sides or top; size them to fit the panel width.
+- **Sample emails are quiet** by default (`quiet_email()`): white body, pale tinted hero with a flat illustration, outline button, grey lines for body copy, so the flow and the headline lead. The bold version (`fernly_email()`) is only for graphics where the email itself is the anchor.
+- **Phones are zoomed in:** the phone is the anchor, scaled so its header and messages fill the frame and the rest crops off the bottom.
+- **Spacing and overlap:** outer margins are equal on all four sides; inside a panel the spacing is equal everywhere (panel edge → element → element → edge). Support cards never overlap the anchor; only the brand icon tile may sit over a corner. Exception: product UI crop heroes (archetype 4) may layer their cards over the crop's edge, as in the approved CRM features hero.
+- **Outlines are consistent:** every floating card (campaign, inbox, stats, link clicks, revenue) carries the same 2px `#D9B8F2` outline.
+- **No large empty areas:** cards fill the frame evenly except a defined copy zone. Four cards: two large + two small placed diagonally (`grid4()`), equal widths, columns ending on one line; an equal 2×2 grid is the fallback. Neighbouring cards match in size, so a single-row card becomes a list when its neighbours are lists.
+- **Scale for big formats:** kit pieces are card-sized; on 1080+ frames scale them (`scaled()`) so text reads without zooming (effective text ≥16px on a 1080 frame).
 - **Illustration panel:** rounded 32 to 40px panel in Lavender or a light palette colour, no dot grid. The flow sits on the left; what it sends sits on the right and bleeds off the panel: a designed sample email (a fictional store, never a real brand; the email may use any design system that suits it), a phone mockup for SMS or WhatsApp, or a white product-UI crop with a 2 to 3px lavender or purple outline. Small floating cards (Email Stats, a revenue card) and the FluentCRM icon tile may overlap corners.
 - Logo top-left when the layout carries one (colour on light, white on purple or dark). Web heroes: copy left, scene right. Social: logo and badge on top, headline, then the scene bleeding off the bottom-right.
 
@@ -74,7 +83,9 @@ Calm, capable, product-first, confident and spacious: a serious marketing platfo
 - Use FluentCRM's own icons from `assets/icons/` (solid glyphs, 80×80, currentColor). See `icons.md` for which icon goes with which step.
 - White inside solid block tiles; purple, slate or a tile colour on light cards. Never add strokes, gradients or a second icon set to the same graphic.
 - The set has no SMS or WhatsApp icon: use the `sms` and `wa` glyphs in `kit.py`.
-- Brand marks are in `assets/brand/`, Fluent family and integration logos in `assets/logos/` (see `logos.md`). Never redraw a mark.
+- Brand marks are in `assets/brand/`: `fluentcrm-logo-light-bg` (purple tile, ink text) on light grounds, `fluentcrm-logo-dark-bg` or `fluentcrm-logo-white` on purple or dark grounds. Never put a white-text logo on a light ground.
+- Platform icons belong to their platform: never use `new_order_woo`, `edd_*` or `woocommerce` for another platform's step (a FluentCart order uses `trigger`).
+- Fluent family Fluent family and integration logos in `assets/logos/` (see `logos.md`). Never redraw a mark.
 
 ## Formats
 1440 web · 1080×1080 · 1200×628 · 1080×1350 · 1080×1920 · feature cards 290×400 and 522×400 · hero image 720×600. Recipes for each are in `formats.md`.
