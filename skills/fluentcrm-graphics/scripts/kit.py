@@ -386,3 +386,27 @@ def scaled(x, y, html, w, h, k=1.7):
     """Place card-sized kit pieces on 1080+ formats: w/h are the piece's NATIVE size; k scales it from the top-left.
     Typical at 1080 wide: phone k≈2.2 (zoomed, cropped off the bottom), support cards k≈1.67, block flows k≈1.25."""
     return f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px; transform: scale({k}); transform-origin: top left">{html}</div>'
+
+
+# ---- 0.1.2: connected cards and overlays -------------------------------------------------
+def mini_card(x, y, w, mark, title, sub, extra=''):
+    """Small outlined UI card: logo or tile, title, subline, optional extra row (badge, field, slots)."""
+    return (f'<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; box-sizing: border-box; background: #FFFFFF; {OUTLINE}; border-radius: 14px; padding: 9px 11px; {SHADOW}; {NUN}; color: {INK}; display: flex; flex-direction: column; gap: 6px">'
+            f'<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; border-radius: 8px; overflow: hidden">{mark}</span>'
+            f'<div style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 11.5px; font-weight: 800">{title}</span><span style="font-size: 9.5px; font-weight: 600; color: {SLATE}">{sub}</span></div></div>{extra}</div>')
+
+def outlined_pill(name, initials, sub):
+    """contact_pill with the standard 2px outline (row overlays on product screens)."""
+    return contact_pill(name, initials, sub).replace('border-radius: 999px; padding: 5px 12px 5px 5px;', 'border: 2px solid #D9B8F2; border-radius: 999px; padding: 5px 14px 5px 5px;')
+
+def elbow(x0, y0, x1, y1, r=14):
+    """SVG path: vertical from (x0,y0), rounded corner, then horizontal to (x1,y1)."""
+    dy = 1 if y1 > y0 else -1; dx = 1 if x1 > x0 else -1
+    return f'M{x0} {y0} V{y1 - dy*r} Q{x0} {y1} {x0 + dx*r} {y1} H{x1}'
+
+def links(w, h, paths, ends):
+    """The one card-to-UI connector style: purple dashed path, ringed dot at each end.
+    paths: SVG path strings (straight 'M x y H x2' or elbow()); ends: [(x, y), ...]. Place last so dots sit on top."""
+    return (f'<svg style="position: absolute; left: 0; top: 0; pointer-events: none" width="{w}" height="{h}" aria-hidden="true">'
+            + ''.join(f'<path d="{d}" fill="none" stroke="{PURPLE}" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"/>' for d in paths)
+            + ''.join(f'<circle cx="{x}" cy="{y}" r="4.5" fill="#FFFFFF" stroke="{PURPLE}" stroke-width="2"/>' for x, y in ends) + '</svg>')

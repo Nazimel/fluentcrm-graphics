@@ -51,3 +51,5 @@ Email Stats (Opened, Clicked with stat-colour bars), Inbox (two reply rows with 
 
 ## Examples
 `examples/feature-card-*-290x400` and `examples/feature-card-*-522x400` (.dc.html boards and .png renders). `scripts/example_generator.py` rebuilds a pair with the kit.
+
+**Expanded cards (0.1.2):** stack the support cards (campaign card, Inbox) on one side and the anchor (phone) on the other. Never place cards on both sides of the anchor to force symmetry, because it leaves blank gaps. Example: `examples/feature-card-whatsapp-522x400`.

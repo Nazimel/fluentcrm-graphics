@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.2 (2026-11-24)
+From review set 2 on the FluentCRM SaaS Identity canvas (row 09).
+
+### Rules
+- **One connector style** for card-to-UI links: purple dashed, right angles with rounded corners, a ringed dot at both ends (`links()`, `elbow()`).
+- **Cards connect to what they describe:** a card beside a flow connects to its exact step; a module card sits outside the screen and connects to its nav item; a row card overlays its row as an outlined overlay (`outlined_pill()`).
+- **Group support cards on one side** and the anchor on the other, never split around the anchor to force symmetry.
+- **Integrations graphic:** a FluentCRM contact screen with an activity timeline in the centre, and outlined UI cards of real data (`mini_card()`) overlapping its edge at their timeline rows. Each logo appears once; no logo-tile rings.
+- **Product-screen hero:** one component for each thing the headline names; the screen is sized so cards fit beside it with equal gaps; one panel wraps the whole group; the page ground is plain.
+- **Stories:** about 250px clear at the top and 280px at the bottom; the panel stays inside those zones; a wide, centred anchor crops at the panel edge; no email squeezed beside a column of cards.
+- **Card size matches the block scale,** and the flow and its cards are centred vertically in the panel.
+
+### Kit
+- New: `mini_card()`, `outlined_pill()`, `elbow()`, `links()`.
+
+### Examples
+- Added: `feature-card-whatsapp-290x400`, `feature-card-whatsapp-522x400`, `integrations-720x600`, `linkedin-post-1200x628`, `web-hero-product-screen-1440x960`, `social-story-1080x1920` (.dc.html and .png).
+
 ## 0.1.1 (2026-11-24)
 From review comments on the FluentCRM SaaS Identity canvas.
 

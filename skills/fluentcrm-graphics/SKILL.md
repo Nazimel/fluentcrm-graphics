@@ -38,6 +38,7 @@ Everything needed is inside this skill folder:
 - Mix colours: a different ground + panel pairing per graphic (`pick_pairing()`); purple grounds for emphasis and expanded cards.
 - Emails are complete and quiet (`quiet_email()`), fitted to the width and running off the bottom only. Phones are zoomed in and crop off the bottom.
 - Equal outer margins and equal internal spacing; no overlap with the anchor; the same outline on every floating card; no large empty areas; four cards as two large + two small, diagonal.
+- Every support card is tied to what it describes: connected to its step or module with `links()`, or laid over its row as an outlined overlay. Support cards go on one side of the anchor, and each logo appears once. Stories keep their top and bottom safe zones. See `references/brand-guide.md` (Connections and overlays) and `references/formats.md`.
 - Light grounds use `fluentcrm-logo-light-bg`; badges on tinted grounds are solid purple.
 - On 1080+ formats scale kit pieces with `scaled()` so everything reads without zooming.
 - One anchor and at most two support cards; previews bleed off the right or bottom only; floating cards stay 8px inside the edges.

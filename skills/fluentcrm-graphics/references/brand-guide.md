@@ -79,6 +79,14 @@ Calm, capable, product-first, confident and spacious: a serious marketing platfo
 - **Message previews:** subject with merge tags as chips (`#EFEBFF` fill, `#351A75` text); SMS and WhatsApp as phone mockups with a channel badge.
 - **Contact rows and profile:** warm grey `#F2EEE8` or peach initials avatars, status badges, tag and list chips, tabs with an ink underline on the active tab.
 
+## Connections and overlays (0.1.2)
+- **One connector style** for joining a card to UI (`links()`): purple dashed line, right angles with rounded corners (`elbow()`), a ringed dot at both ends, mirrored left and right. Automation step connectors keep their own style.
+- **Cards connect to what they describe:** a card beside a flow connects to its exact step and is centred on it; a card about a module (Campaigns, Automations) sits outside the screen and connects to that nav item.
+- **Row cards overlay their row:** a card about one contact or record sits over that row as an outlined overlay, with no connector. The contact pill gets the 2px outline too (`outlined_pill()`).
+- **Group support cards** on one side and the anchor on the other; never split cards around the anchor to force symmetry.
+- **Match card size to the block scale** and centre the flow and its cards vertically in the panel.
+- **A logo appears once per graphic.**
+
 ## Iconography
 - Use FluentCRM's own icons from `assets/icons/` (solid glyphs, 80×80, currentColor). See `icons.md` for which icon goes with which step.
 - White inside solid block tiles; purple, slate or a tile colour on light cards. Never add strokes, gradients or a second icon set to the same graphic.

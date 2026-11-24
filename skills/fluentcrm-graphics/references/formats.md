@@ -22,6 +22,8 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 - **Scene:** archetype 4, a product UI crop (white panel, 3px purple outline, radius 32, bleeding right and bottom) with two overlapping cards that map to the page's message. Example: contact profile + signup form card (capture) + Notes & Activities card (understand).
 - **Example:** `examples/hero-image-crm-features-720x600.*`
 
+**Integrations graphic (720×600):** the centre is a FluentCRM contact screen with an activity timeline ("Activity from your plugins"). Each integration is an outlined `mini_card()` of real data (order, signup, enrolment, renewal, booking, ticket) overlapping the screen edge at its own timeline row, with a purple tab dot. Cards alternate sides. Logos appear only in the cards, and timeline nodes are plain dots. No logo-tile rings and no bare icon hub.
+
 ## Blog cover: 1200×628
 - **Ground:** a pairing ground (e.g. Periwinkle `#E4E5FF`), full bleed (radius 0). **Equal 48px outer margins on all four sides.**
 - **Copy on the image:** solid purple eyebrow pill (e.g. "AUTOMATION GUIDE"), a short headline in Manrope 800 ~52px (shorten long titles to their promise), one supporting line in Manrope 600 ~20px slate, then integration tiles (56px logos with name labels and lavender "+" between) when the article is about integrations. Copy column left 48px, width ~480, vertically centred between 48px top and bottom.
@@ -30,6 +32,8 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 - **Example:** `examples/blog-cover-courses-1200x628.*`
 
 ## Web hero (full section): 1440×960
+**Product-screen hero:** show one component for each thing the headline names (contacts screen, automation card, campaigns). Size the screen so module cards fit beside it with equal 24px gaps, and put row cards over their rows as outlined overlays. A single panel wraps the whole group (cards, screen, overlays) with 32px of padding and bleeds off the bottom. The page ground is one plain colour. Never put a strip behind the screen alone. Centre the group horizontally.
+
 - Nav, copy column left (Manrope 52px headline, purple CTA, chips), scene right on a Lavender panel with flow, sample email, icon tile and an Email Stats card.
 - **Example:** `examples/web-hero-1440x960.dc.html`
 
@@ -39,6 +43,10 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 - **Scale everything up** with `scaled()`: phone k≈2.2, zoomed so its header and messages fill the panel and the rest crops off the bottom; support cards k≈1.67, same width, left-aligned, stacked with an equal gap. Equal 48px spacing panel edge → cards → phone → frame edge; no overlap.
 - An email scene follows the email rules: complete, fitted, runs off the bottom (e.g. top ~454, height to frame bottom + 30).
 - **Example:** `examples/social-post-1080x1080.dc.html`
+
+**Story (1080×1920):** keep about 250px clear at the top and 280px at the bottom for the platform UI. The panel sits inside those zones and does not bleed. The anchor (email, phone) is wide and centred and crops at the panel's bottom edge, with at most two support cards in one row above it. Never squeeze an email into a column beside cards.
+
+**LinkedIn post (1200×628):** copy on the left, panel on the right. If a flow is shown, its cards connect to their steps.
 
 ## Email header: 600×200
 - Pairing ground (e.g. Cream), `fluentcrm-logo-light-bg` top-left, Manrope ~26px headline on two lines, and a pairing panel on the right (x 340, 240 wide, radius 24) running off the bottom with one or two blocks at s≈0.6. Keep text ≥14px.
