@@ -404,9 +404,10 @@ def elbow(x0, y0, x1, y1, r=14):
     dy = 1 if y1 > y0 else -1; dx = 1 if x1 > x0 else -1
     return f'M{x0} {y0} V{y1 - dy*r} Q{x0} {y1} {x0 + dx*r} {y1} H{x1}'
 
-def links(w, h, paths, ends):
-    """The one card-to-UI connector style: purple dashed path, ringed dot at each end.
-    paths: SVG path strings (straight 'M x y H x2' or elbow()); ends: [(x, y), ...]. Place last so dots sit on top."""
+def links(w, h, paths, ends, color='#FFFFFF'):
+    """The one card-to-UI connector style (0.1.3): a solid 2.5px line in a quiet tone (white on light panels,
+    #E4D6FB on purple), round caps, no dashes and no ringed dots. ends: [(x, y), ...] in pairs (start, target);
+    only the target end gets a small solid dot. Place last so the dot sits on top of the edge it meets."""
     return (f'<svg style="position: absolute; left: 0; top: 0; pointer-events: none" width="{w}" height="{h}" aria-hidden="true">'
-            + ''.join(f'<path d="{d}" fill="none" stroke="{PURPLE}" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"/>' for d in paths)
-            + ''.join(f'<circle cx="{x}" cy="{y}" r="4.5" fill="#FFFFFF" stroke="{PURPLE}" stroke-width="2"/>' for x, y in ends) + '</svg>')
+            + ''.join(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' for d in paths)
+            + ''.join(f'<circle cx="{x}" cy="{y}" r="4" fill="{color}"/>' for i, (x, y) in enumerate(ends) if i % 2) + '</svg>')

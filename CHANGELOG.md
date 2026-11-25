@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.3 (2026-11-25)
+From review set 3 and the blog cover tests on the canvas (row 10).
+
+### Rules
+- **New connector style:** a solid 2.5px line in a quiet tone, with round caps and a small solid dot only at the target end. It replaces the dashed purple line with ring dots, which read as AI-made. Lines that cross into a white UI use lilac. Automation step connectors are unchanged.
+- **Blog covers carry no text.** Each one is a real anchor on the right, cropping at the panel bottom, with linked support on the left: a tight two-card stack, an entry and result for an automation editor, or the flow directly on the panel when the cover pairs an automation with an email. One small result card fills any gap beside a flow. Emails keep real email hierarchy and are never shrunk to fit cards.
+- **Profile banners (1500×500):** illustration only, with the lower-left area kept clear for the profile photo.
+- **Two small cards stack tightly,** and their links bend to reach distant targets.
+- **YouTube thumbnails are out of scope.**
+- Tested and rejected for blog covers: components on both sides, a bigger anchor, and flat decorative illustrations.
+
+### Kit
+- `links()` now draws the new style and takes a `color` argument.
+
+### Examples
+- Added: six blog covers (`blog-cover-cart-email`, `-automation-email`, `-automation`, `-segments`, `-report`, `-sms`) and `profile-banner-1500x500`.
+- Updated to the new connector style: `integrations-720x600`, `linkedin-post-1200x628`, `web-hero-product-screen-1440x960`.
+- Removed: `blog-cover-courses` and `blog-cover-forms`, which had text on the cover.
+
 ## 0.1.2 (2026-11-24)
 From review set 2 on the FluentCRM SaaS Identity canvas (row 09).
 

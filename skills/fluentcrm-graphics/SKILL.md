@@ -35,6 +35,7 @@ Everything needed is inside this skill folder:
    - Reply briefly: what was made, decisions to confirm (default size used, copy on or off the image, Pro features shown, sample data invented), and one next step.
 
 ## Non-negotiables
+- Blog covers and profile banners carry no text: illustration only, one real anchor plus linked support (see `references/formats.md`). Never make YouTube thumbnails with this skill.
 - Mix colours: a different ground + panel pairing per graphic (`pick_pairing()`); purple grounds for emphasis and expanded cards.
 - Emails are complete and quiet (`quiet_email()`), fitted to the width and running off the bottom only. Phones are zoomed in and crop off the bottom.
 - Equal outer margins and equal internal spacing; no overlap with the anchor; the same outline on every floating card; no large empty areas; four cards as two large + two small, diagonal.

@@ -25,11 +25,15 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 **Integrations graphic (720×600):** the centre is a FluentCRM contact screen with an activity timeline ("Activity from your plugins"). Each integration is an outlined `mini_card()` of real data (order, signup, enrolment, renewal, booking, ticket) overlapping the screen edge at its own timeline row, with a purple tab dot. Cards alternate sides. Logos appear only in the cards, and timeline nodes are plain dots. No logo-tile rings and no bare icon hub.
 
 ## Blog cover: 1200×628
-- **Ground:** a pairing ground (e.g. Periwinkle `#E4E5FF`), full bleed (radius 0). **Equal 48px outer margins on all four sides.**
-- **Copy on the image:** solid purple eyebrow pill (e.g. "AUTOMATION GUIDE"), a short headline in Manrope 800 ~52px (shorten long titles to their promise), one supporting line in Manrope 600 ~20px slate, then integration tiles (56px logos with name labels and lavender "+" between) when the article is about integrations. Copy column left 48px, width ~480, vertically centred between 48px top and bottom.
-- **Scene:** a pairing panel at the right (x 576, y 48, 576×532, radius 40, overflow hidden) with archetype 1: left-aligned flow at s≈0.7 (x 32) and a `quiet_email()` (x 289, w 255) that fits the panel width and runs off the bottom only. Spacing panel edge → flow → email → panel edge is an equal 32px. A short dashed line joins the send step to the email. Shorten step labels to keep the spacing.
-- **Offer:** a version without the headline if the blog template already prints the title.
-- **Example:** `examples/blog-cover-courses-1200x628.*`
+- **No text on the cover.** The page prints the title, so no headline, eyebrow, logo or summary appears on the image.
+- **Ground and panel:** a pairing ground, full bleed. One pairing panel spans the cover with equal 48px margins (x 48, y 48, 1104×532, radius 40, overflow hidden).
+- **Structure:** one real anchor on the right, cropping at the panel's bottom edge. The anchor can be a screen, report, automation editor, phone or a realistic email. Each element on the left is linked with `links()` to the part of the anchor it explains. The left margin equals the right margin.
+  - **Anchor plus cards:** the left column is two related cards at the same scale, about k 1.27, stacked tightly with a 24 to 32px gap and centred vertically as a pair. When their targets are far apart, the links bend at rounded corners outside the screen; the cards never spread apart. Example: segments uses Segment rules and Joined this week; a campaign report uses the campaign card and Sent to.
+  - **Automation as the anchor:** the automation editor screen, with a header, Active toggle, dotted canvas and the flow. The left cards are the entry (who triggered it) and the result (who reached the end), linked to the first and last steps.
+  - **Automation plus email:** the flow sits directly on the panel at block scale about 1.0, with no frame or background. The realistic email, about 440px wide, sits on the right. One line runs from the send step to the email. One small result card fills the gap beside the step it belongs to, such as "Cart recovered" beside the goal, without touching the email.
+- **Realistic email:** the email follows normal email hierarchy: inbox bar, brand header, headline, body, product rows with thumbnails and prices, subtotal, a full-width CTA and a footer note. Never shrink the email to make room for cards.
+- **Avoid:** components on both sides, flat decorative illustrations, and enlarging the anchor to fill space. All of these were tested and rejected.
+- **Examples:** `examples/blog-cover-cart-email-1200x628`, `blog-cover-automation-email-1200x628`, `blog-cover-automation-1200x628`, `blog-cover-segments-1200x628`, `blog-cover-report-1200x628`, `blog-cover-sms-1200x628`.
 
 ## Web hero (full section): 1440×960
 **Product-screen hero:** show one component for each thing the headline names (contacts screen, automation card, campaigns). Size the screen so module cards fit beside it with equal 24px gaps, and put row cards over their rows as outlined overlays. A single panel wraps the whole group (cards, screen, overlays) with 32px of padding and bleeds off the bottom. The page ground is one plain colour. Never put a strip behind the screen alone. Centre the group horizontally.
@@ -45,6 +49,10 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 - **Example:** `examples/social-post-1080x1080.dc.html`
 
 **Story (1080×1920):** keep about 250px clear at the top and 280px at the bottom for the platform UI. The panel sits inside those zones and does not bleed. The anchor (email, phone) is wide and centred and crops at the panel's bottom edge, with at most two support cards in one row above it. Never squeeze an email into a column beside cards.
+
+**Profile banner (1500×500):** illustration only, with no logo or copy. Keep the lower-left area, about 440×200, clear for the profile photo. The panel runs from x 460 to 1452 and from y 48 to 452. It holds one realistic email anchor with the matching flow linked to its send step. Example: `examples/profile-banner-1500x500`.
+
+**Not supported:** YouTube thumbnails. If one is requested, say this skill doesn't make them.
 
 **LinkedIn post (1200×628):** copy on the left, panel on the right. If a flow is shown, its cards connect to their steps.
 
