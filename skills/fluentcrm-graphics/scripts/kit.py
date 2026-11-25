@@ -38,9 +38,21 @@ PAIRINGS = [
 ]
 EMPHASIS_GROUNDS = ('#7742E6', '#5F35B8')   # expanded/hover and emphasis cards
 
-def pick_pairing(i):
-    """(name, ground, panel) for the i-th graphic in a set, so neighbours never share a pairing."""
-    return PAIRINGS[i % len(PAIRINGS)]
+import random as _random
+_PAIR_ORDER = []
+def pick_pairing(i=None):
+    """(name, ground, panel). Random by default: every request gets a shuffled order, so the first graphic
+    is not always the same pairing. Within one run, successive calls (or i = 0, 1, 2...) walk that shuffled
+    order, so graphics in a set never share a pairing. Never hard-code PAIRINGS[0]."""
+    global _PAIR_ORDER
+    if not _PAIR_ORDER:
+        _PAIR_ORDER = _random.sample(PAIRINGS, len(PAIRINGS))
+    if i is None:
+        p = _PAIR_ORDER.pop(0); _PAIR_ORDER.append(p); return p
+    return _PAIR_ORDER[i % len(_PAIR_ORDER)]
+def blog_colour():
+    """A random solid background colour for a blog cover (a pairing's panel colour)."""
+    return pick_pairing()[2]
 SHADOW = 'box-shadow: 0 12px 28px rgba(60,30,120,0.16)'
 
 # ---------------------------------------------------------------- icons
@@ -416,8 +428,9 @@ def links(w, h, paths, ends, color='#FFFFFF'):
 # ---- 0.1.4: blog covers are 1920x1080 ----------------------------------------------------
 BLOG_W, BLOG_H = 1920, 1080
 def blog_cover(inner, panel):
-    """Wrap a blog-cover scene into the 1920x1080 cover. The scene is laid out on a 1104x532 grid
-    (anchor on the right with its top at y 48 and running past y 532; left column centred on y 266),
-    scaled x1.65 and dropped 60px so the anchor crops at the panel bottom. Panel: 48px margins, radius 56."""
-    return (f'<div style="position: absolute; left: 48px; top: 48px; width: 1824px; height: 984px; border-radius: 56px; background: {panel}; overflow: hidden">'
-            f'<div style="position: absolute; left: 0; top: 60px; width: 1104px; height: 532px; transform: scale(1.65); transform-origin: 0 0">{inner}</div></div>')
+    """Wrap a blog-cover scene into the 1920x1080 cover on ONE solid background colour (no panel over a lighter ground).
+    Pass the same colour as the board's ground. The scene is laid out on a 1104x532 grid (anchor on the right with its
+    top at y 48 and running past y 532; left column centred on y 266), scaled x1.7, centred horizontally and dropped
+    120px so the anchor crops at the bottom edge."""
+    return (f'<div style="position: absolute; inset: 0; background: {panel}; overflow: hidden">'
+            f'<div style="position: absolute; left: 21px; top: 120px; width: 1104px; height: 532px; transform: scale(1.7); transform-origin: 0 0">{inner}</div></div>')

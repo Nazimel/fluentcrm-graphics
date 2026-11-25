@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 (2026-11-25)
+- **Random colours:** `pick_pairing()` now shuffles the pairings for every request, so graphics no longer always start with the first pairing. Within a set, each graphic still gets a different pairing. The new `blog_colour()` helper picks a random solid colour for blog covers.
+- **Solid blog backgrounds:** blog covers use one solid background colour edge to edge, with no panel over a lighter ground. `blog_cover()` now fills the 1920×1080 cover and scales the scene ×1.7.
+- Blog cover examples were re-rendered on solid backgrounds.
+
 ## 0.1.4 (2026-11-25)
 - **Blog covers are always 1920×1080.** The new `blog_cover()` helper wraps a scene built on the 1104×532 grid into the 1920×1080 cover. It uses a 48px panel margin, scales the scene ×1.65 and drops it 60px, so the anchor still crops at the panel bottom.
 - Blog cover examples were re-rendered at 1920×1080 and renamed `*-1920x1080`.

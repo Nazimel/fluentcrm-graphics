@@ -36,7 +36,7 @@ Everything needed is inside this skill folder:
 
 ## Non-negotiables
 - Blog covers are always 1920×1080. Blog covers and profile banners carry no text: illustration only, one real anchor plus linked support (see `references/formats.md`). Never make YouTube thumbnails with this skill.
-- Mix colours: a different ground + panel pairing per graphic (`pick_pairing()`); purple grounds for emphasis and expanded cards.
+- Mix colours at random: call `pick_pairing()` with no index (or `blog_colour()` for blog covers) so every request gets a fresh random pairing. Never default to the first pairing or reuse the one from the previous graphic. Within a set, each graphic gets a different pairing; purple grounds for emphasis and expanded cards.
 - Emails are complete and quiet (`quiet_email()`), fitted to the width and running off the bottom only. Phones are zoomed in and crop off the bottom.
 - Equal outer margins and equal internal spacing; no overlap with the anchor; the same outline on every floating card; no large empty areas; four cards as two large + two small, diagonal.
 - Every support card is tied to what it describes: connected to its step or module with `links()`, or laid over its row as an outlined overlay. Support cards go on one side of the anchor, and each logo appears once. Stories keep their top and bottom safe zones. See `references/brand-guide.md` (Connections and overlays) and `references/formats.md`.
