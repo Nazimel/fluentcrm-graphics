@@ -411,3 +411,13 @@ def links(w, h, paths, ends, color='#FFFFFF'):
     return (f'<svg style="position: absolute; left: 0; top: 0; pointer-events: none" width="{w}" height="{h}" aria-hidden="true">'
             + ''.join(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' for d in paths)
             + ''.join(f'<circle cx="{x}" cy="{y}" r="4" fill="{color}"/>' for i, (x, y) in enumerate(ends) if i % 2) + '</svg>')
+
+
+# ---- 0.1.4: blog covers are 1920x1080 ----------------------------------------------------
+BLOG_W, BLOG_H = 1920, 1080
+def blog_cover(inner, panel):
+    """Wrap a blog-cover scene into the 1920x1080 cover. The scene is laid out on a 1104x532 grid
+    (anchor on the right with its top at y 48 and running past y 532; left column centred on y 266),
+    scaled x1.65 and dropped 60px so the anchor crops at the panel bottom. Panel: 48px margins, radius 56."""
+    return (f'<div style="position: absolute; left: 48px; top: 48px; width: 1824px; height: 984px; border-radius: 56px; background: {panel}; overflow: hidden">'
+            f'<div style="position: absolute; left: 0; top: 60px; width: 1104px; height: 532px; transform: scale(1.65); transform-origin: 0 0">{inner}</div></div>')

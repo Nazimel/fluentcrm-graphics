@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4 (2026-11-25)
+- **Blog covers are always 1920×1080.** The new `blog_cover()` helper wraps a scene built on the 1104×532 grid into the 1920×1080 cover. It uses a 48px panel margin, scales the scene ×1.65 and drops it 60px, so the anchor still crops at the panel bottom.
+- Blog cover examples were re-rendered at 1920×1080 and renamed `*-1920x1080`.
+
 ## 0.1.3 (2026-11-25)
 From review set 3 and the blog cover tests on the canvas (row 10).
 

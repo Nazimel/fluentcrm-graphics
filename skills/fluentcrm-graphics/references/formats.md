@@ -24,16 +24,17 @@ Proven layouts from the test runs. Each lists size, ground, safe zones, scene an
 
 **Integrations graphic (720×600):** the centre is a FluentCRM contact screen with an activity timeline ("Activity from your plugins"). Each integration is an outlined `mini_card()` of real data (order, signup, enrolment, renewal, booking, ticket) overlapping the screen edge at its own timeline row, with a purple tab dot. Cards alternate sides. Logos appear only in the cards, and timeline nodes are plain dots. No logo-tile rings and no bare icon hub.
 
-## Blog cover: 1200×628
+## Blog cover: 1920×1080 (always)
 - **No text on the cover.** The page prints the title, so no headline, eyebrow, logo or summary appears on the image.
-- **Ground and panel:** a pairing ground, full bleed. One pairing panel spans the cover with equal 48px margins (x 48, y 48, 1104×532, radius 40, overflow hidden).
+- **Size:** always 1920×1080, never 1200×628.
+- **Ground and panel:** a pairing ground, full bleed. One pairing panel with equal 48px margins (1824×984, radius 56, overflow hidden). Build the scene on a 1104×532 grid (anchor top at y 48 and running past y 532, left column centred on y 266), then wrap it with `blog_cover(scene, panel_colour)`. That scales it ×1.65 and drops it 60px, so the anchor crops at the panel bottom.
 - **Structure:** one real anchor on the right, cropping at the panel's bottom edge. The anchor can be a screen, report, automation editor, phone or a realistic email. Each element on the left is linked with `links()` to the part of the anchor it explains. The left margin equals the right margin.
   - **Anchor plus cards:** the left column is two related cards at the same scale, about k 1.27, stacked tightly with a 24 to 32px gap and centred vertically as a pair. When their targets are far apart, the links bend at rounded corners outside the screen; the cards never spread apart. Example: segments uses Segment rules and Joined this week; a campaign report uses the campaign card and Sent to.
   - **Automation as the anchor:** the automation editor screen, with a header, Active toggle, dotted canvas and the flow. The left cards are the entry (who triggered it) and the result (who reached the end), linked to the first and last steps.
   - **Automation plus email:** the flow sits directly on the panel at block scale about 1.0, with no frame or background. The realistic email, about 440px wide, sits on the right. One line runs from the send step to the email. One small result card fills the gap beside the step it belongs to, such as "Cart recovered" beside the goal, without touching the email.
 - **Realistic email:** the email follows normal email hierarchy: inbox bar, brand header, headline, body, product rows with thumbnails and prices, subtotal, a full-width CTA and a footer note. Never shrink the email to make room for cards.
 - **Avoid:** components on both sides, flat decorative illustrations, and enlarging the anchor to fill space. All of these were tested and rejected.
-- **Examples:** `examples/blog-cover-cart-email-1200x628`, `blog-cover-automation-email-1200x628`, `blog-cover-automation-1200x628`, `blog-cover-segments-1200x628`, `blog-cover-report-1200x628`, `blog-cover-sms-1200x628`.
+- **Examples:** `examples/blog-cover-cart-email-1920x1080`, `blog-cover-automation-email-1920x1080`, `blog-cover-automation-1920x1080`, `blog-cover-segments-1920x1080`, `blog-cover-report-1920x1080`, `blog-cover-sms-1920x1080`.
 
 ## Web hero (full section): 1440×960
 **Product-screen hero:** show one component for each thing the headline names (contacts screen, automation card, campaigns). Size the screen so module cards fit beside it with equal 24px gaps, and put row cards over their rows as outlined overlays. A single panel wraps the whole group (cards, screen, overlays) with 32px of padding and bleeds off the bottom. The page ground is one plain colour. Never put a strip behind the screen alone. Centre the group horizontally.
