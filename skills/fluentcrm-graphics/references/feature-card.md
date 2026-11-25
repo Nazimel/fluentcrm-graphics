@@ -1,6 +1,6 @@
 # FeatureCard
 
-One self-contained illustration card in the website's language, built from the 20 website reference illustrations and first shipped as the Black Friday feature cards (Email Campaign, SMS Marketing, WhatsApp Marketing, Marketing Automation). The same system scales to any size and either ground, so one scene can become a 290×400 grid card, its 522×400 hover state, a 1080² social visual or a 1200×628 blog cover. **Draft v3, not locked.**
+One self-contained illustration card in the website's language, built from the 20 website reference illustrations and first shipped as the Black Friday feature cards (Email Campaign, SMS Marketing, WhatsApp Marketing, Marketing Automation). The same system scales to any size and either ground, so one scene can become a 290×400 grid card, its 522×400 hover state, a 1080² social visual or a 1920×1080 blog cover. **Draft v3, not locked.**
 
 ## When to use
 - Feature grids, hover-expand pairs, feature-page heroes, and the visual half of social posts and blog covers.
