@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6 (2026-11-25)
+- **Eight background colours with equal weight:** Apricot, Orchid, Coral, Lavender, Mint, Aqua, Butter and Periwinkle, each with its own light tint. This replaces the old six pairings, which had only four different colours and gave Lavender double weight. Sky, Sand, Rose and Sage were reviewed and left out.
+- The brand guide colour list and the blog cover examples are updated.
+
 ## 0.1.5 (2026-11-25)
 - **Random colours:** `pick_pairing()` now shuffles the pairings for every request, so graphics no longer always start with the first pairing. Within a set, each graphic still gets a different pairing. The new `blog_colour()` helper picks a random solid colour for blog covers.
 - **Solid blog backgrounds:** blog covers use one solid background colour edge to edge, with no panel over a lighter ground. `blog_cover()` now fills the 1920×1080 cover and scales the scene ×1.7.

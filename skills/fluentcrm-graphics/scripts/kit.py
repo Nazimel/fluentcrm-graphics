@@ -19,6 +19,7 @@ MAN = "font-family: 'Manrope', 'Inter', system-ui, sans-serif"    # marketing he
 
 # ---------------------------------------------------------------- colours
 LAVENDER, ORCHID, APRICOT, CORAL = '#C9B3F5', '#E3B7F1', '#FFCC99', '#FFA9A4'
+MINT, AQUA, BUTTER, PERIWINKLE_SOLID = '#A8E6CF', '#A3E4E0', '#FFE08A', '#B8C1FA'
 LILAC, PERIWINKLE, CREAM = '#F7EDFC', '#E4E5FF', '#FFF9EB'
 PURPLE, PURPLE_DARK, PURPLE_WASH = '#7742E6', '#5F35B8', '#EFE8FC'
 INK, SLATE, MUTED, LINE, SURFACE = '#0E121B', '#525866', '#99A0AE', '#E1E4EA', '#F5F7FA'
@@ -28,13 +29,15 @@ CARD_OUTLINE = '#D9B8F2'
 OUTLINE = f'border: 2px solid {CARD_OUTLINE}'   # every floating card uses this outline
 
 # Ground + panel pairings. Use a different pairing for each graphic in a set.
-PAIRINGS = [
-    ('Cream + Apricot', '#FFF9EB', '#FFCC99'),
-    ('Periwinkle + Orchid', '#E4E5FF', '#E3B7F1'),
-    ('Cream + Coral', '#FFF9EB', '#FFA9A4'),
-    ('Lilac + Lavender', '#F7EDFC', '#C9B3F5'),
-    ('Mint + Lavender', '#ECFFF8', '#C9B3F5'),
-    ('White + Periwinkle', '#FFFFFF', '#C9B3F6'),
+PAIRINGS = [   # (name, light ground, solid panel / blog background) — 8 distinct background colours, equal weight
+    ('Apricot', '#FFF6EC', '#FFCC99'),
+    ('Orchid', '#FBF0FD', '#E3B7F1'),
+    ('Coral', '#FFF1F0', '#FFA9A4'),
+    ('Lavender', '#F7EDFC', '#C9B3F5'),
+    ('Mint', '#ECFFF8', '#A8E6CF'),
+    ('Aqua', '#EAFBFA', '#A3E4E0'),
+    ('Butter', '#FFFBEA', '#FFE08A'),
+    ('Periwinkle', '#EEF0FF', '#B8C1FA'),
 ]
 EMPHASIS_GROUNDS = ('#7742E6', '#5F35B8')   # expanded/hover and emphasis cards
 
